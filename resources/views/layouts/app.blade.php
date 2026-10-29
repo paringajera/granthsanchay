@@ -115,6 +115,10 @@
                        class="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ request()->routeIs('contact') ? 'bg-[#5c141e] text-[#f4c466] shadow-sm font-semibold' : 'text-[#fcebc7]/90 hover:text-white hover:bg-white/10' }}">
                         Contact
                     </a>
+                    <a href="{{ route('login') }}" 
+                       class="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5 {{ request()->routeIs('login') ? 'bg-[#5c141e] text-[#f4c466] shadow-sm font-semibold' : 'text-[#fcebc7]/90 hover:text-white hover:bg-white/10' }}">
+                        <span>Login</span>
+                    </a>
                 </div>
 
                 <!-- Schedule a Demo CTA Button (Prominent) -->
@@ -163,6 +167,7 @@
             <a href="{{ route('price') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('price') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Price</a>
             <a href="{{ route('support') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('support') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Support</a>
             <a href="{{ route('contact') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('contact') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Contact</a>
+            <a href="{{ route('login') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('login') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Login</a>
             <div class="pt-3">
                 <a href="{{ route('schedule-demo') }}" @click="mobileMenuOpen = false" class="block text-center w-full py-3 px-4 rounded-xl font-bold text-sm text-[#2d070d] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] shadow-md">
                     Schedule a demo
@@ -247,6 +252,7 @@
                         <li><a href="{{ route('support') }}" class="hover:text-[#f4c466] transition-colors flex items-center gap-2"><span>›</span> Support & Helpdesk</a></li>
                         <li><a href="{{ route('schedule-demo') }}" class="hover:text-[#f4c466] transition-colors flex items-center gap-2"><span>›</span> Schedule a Demo</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-[#f4c466] transition-colors flex items-center gap-2"><span>›</span> Contact Us</a></li>
+                        <li><a href="{{ route('login') }}" class="hover:text-[#f4c466] transition-colors flex items-center gap-2"><span>›</span> Staff & Member Login</a></li>
                     </ul>
                 </div>
 

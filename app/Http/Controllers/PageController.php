@@ -108,4 +108,12 @@ class PageController extends Controller
         return redirect()->route('contact')
             ->with('success', 'Thank you, '.$validated['name'].'! Your message has been sent successfully. Our team will get back to you at '.$validated['email'].' within 24 hours.');
     }
+
+    /**
+     * Display the Login Portal page (UI only).
+     */
+    public function login(): View
+    {
+        return view('pages.login');
+    }
 }

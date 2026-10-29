@@ -8,24 +8,14 @@
 <!-- CONTINUOUS SACRED GRANTH EXPERIENCE (Hero + 4 Pillars Seamless, No Divider) -->
 <!-- ========================================================================= -->
 <div class="relative bg-[#120204] text-white overflow-hidden" 
-     id="hero-and-pillars-wrapper"
-     x-data="{
-         granthState: 'open'
-     }">
+     id="hero-and-pillars-wrapper">
 
     <!-- CONTINUOUS SACRED GRANTH PARALLAX BACKGROUND (Extends through Hero down into 4 Pillars) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
         
-        <!-- Open Granth Background Image (Slow Parallax so it extends down behind the 4 Pillars boxes) -->
-        <div class="absolute -top-[5%] left-0 right-0 h-[145vh] min-h-[1050px] bg-cover bg-center transition-opacity duration-1000 ease-out will-change-transform" 
-             style="background-image: url('{{ asset('images/open-granth-real.jpg') }}'); transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.38), 0) scale(1.12); -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%); mask-image: linear-gradient(to bottom, black 72%, transparent 98%);"
-             :class="granthState === 'open' ? 'opacity-85' : 'opacity-0'">
-        </div>
-
-        <!-- Closed Granth Background Image -->
-        <div class="absolute -top-[5%] left-0 right-0 h-[145vh] min-h-[1050px] bg-cover bg-center transition-opacity duration-1000 ease-out will-change-transform" 
-             style="background-image: url('{{ asset('images/closed-granth-front.jpg') }}'); transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.38), 0) scale(1.12); -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%); mask-image: linear-gradient(to bottom, black 72%, transparent 98%);"
-             :class="granthState === 'closed' ? 'opacity-85' : 'opacity-0'">
+        <!-- Open Granth Background Image (Slow Parallax extending behind 4 Pillars boxes) -->
+        <div class="absolute -top-[5%] left-0 right-0 h-[145vh] min-h-[1050px] bg-cover bg-center opacity-85 will-change-transform" 
+             style="background-image: url('{{ asset('images/open-granth-real.jpg') }}'); transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.38), 0) scale(1.12); -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%); mask-image: linear-gradient(to bottom, black 72%, transparent 98%);">
         </div>
 
         <!-- Continuous Atmospheric Vignette & Contrast Gradients (Zero Divider Line) -->
@@ -111,26 +101,12 @@
     <!-- Hero Content Overlay (Razor Sharp & Highly Legible) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-8">
         
-        <!-- Top Pill & Real Granth Parallax State Switcher -->
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <!-- Top Pill Badge -->
+        <div class="flex items-center justify-center lg:justify-start mb-6">
             <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2d070d]/90 border border-[#f4c466]/40 text-[#fcebc7] text-xs font-semibold shadow-xl backdrop-blur-md">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#f4c466] shadow-[0_0_8px_#f4c466] animate-pulse"></span>
                 <span>Ready for a Digital Transformation?</span>
                 <span class="text-[#f4c466] font-bold">★ 250+ Libraries Digitized</span>
-            </div>
-
-            <!-- Interactive Parallax Granth State Switcher -->
-            <div class="inline-flex items-center p-1 rounded-xl bg-[#2d070d]/90 border border-[#f4c466]/40 shadow-xl backdrop-blur-md text-xs font-bold">
-                <button @click="granthState = 'open'"
-                        :class="granthState === 'open' ? 'bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] text-[#240509] shadow-md' : 'text-[#fcebc7]/80 hover:text-white'"
-                        class="px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer">
-                    <span>📖 Open Granth</span>
-                </button>
-                <button @click="granthState = 'closed'"
-                        :class="granthState === 'closed' ? 'bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] text-[#240509] shadow-md' : 'text-[#fcebc7]/80 hover:text-white'"
-                        class="px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer">
-                    <span>📕 Closed Granth</span>
-                </button>
             </div>
         </div>
 

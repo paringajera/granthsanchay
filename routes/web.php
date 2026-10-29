@@ -23,3 +23,4 @@ Route::get('/schedule-demo', [PageController::class, 'scheduleDemo']); // Alias
 Route::post('/schedule-a-demo', [PageController::class, 'submitDemo'])->name('schedule-demo.submit');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/login', [PageController::class, 'login'])->name('login');
