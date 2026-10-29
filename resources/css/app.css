@@ -1,0 +1,636 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+/* Yellix Typeface (Identified from reference design) */
+@font-face {
+    font-family: 'Yellix';
+    src: url('/fonts/yellix/Yellix-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Yellix';
+    src: url('/fonts/yellix/Yellix-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Yellix';
+    src: url('/fonts/yellix/Yellix-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Yellix';
+    src: url('/fonts/yellix/Yellix-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-sans: 'Yellix', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Yellix', 'Plus Jakarta Sans', sans-serif;
+    --font-devanagari: 'Noto Sans Devanagari', sans-serif;
+    --font-serif: 'Cinzel', serif;
+
+    /* Theme Palette derived from Granth Sanchay Poster */
+    --color-wine-950: #1f0407;
+    --color-wine-900: #2d070d;
+    --color-wine-850: #380a10;
+    --color-wine-800: #460d15;
+    --color-wine-700: #5c141e;
+    --color-wine-600: #741d29;
+    --color-wine-500: #932a39;
+    --color-wine-100: #faebed;
+    --color-wine-50: #fdf5f6;
+
+    --color-gold-50: #fffdf7;
+    --color-gold-100: #fef7e7;
+    --color-gold-200: #fcebc7;
+    --color-gold-300: #f8da98;
+    --color-gold-400: #f4c466;
+    --color-gold-500: #dfa839;
+    --color-gold-600: #be8624;
+    --color-gold-700: #96641b;
+
+    --color-cream-bg: #fdfaf3;
+    --color-cream-surface: #f8f2e4;
+    --color-cream-card: #ffffff;
+    --color-cream-border: #ede1cb;
+}
+
+:root {
+    --primary-wine: #460d15;
+    --primary-wine-dark: #2d070d;
+    --accent-gold: #f4c466;
+    --accent-gold-dark: #dfa839;
+}
+
+body {
+    background-color: #fdfaf3;
+    color: #2b1d1f;
+    font-family: 'Yellix', var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Yellix', var(--font-heading);
+}
+
+/* Custom Gradients & Utilities */
+.bg-wine-gradient {
+    background: linear-gradient(135deg, #2d070d 0%, #460d15 50%, #380a10 100%);
+}
+
+.bg-wine-radial {
+    background: radial-gradient(circle at 50% 20%, #5c141e 0%, #380a10 60%, #240509 100%);
+}
+
+.bg-gold-gradient {
+    background: linear-gradient(135deg, #f7dda2 0%, #f4c466 50%, #dfa839 100%);
+}
+
+.text-gold-gradient {
+    background: linear-gradient(135deg, #ffe08a 0%, #f4c466 50%, #dfa839 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-wine-gradient {
+    background: linear-gradient(135deg, #2d070d 0%, #5c141e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass-nav {
+    background: #1f0407;
+    border-bottom: 1px solid rgba(244, 196, 102, 0.25);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+.glass-card-dark {
+    background: rgba(56, 10, 16, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(244, 196, 102, 0.25);
+}
+
+.glass-card-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(237, 225, 203, 0.8);
+}
+
+.gold-shadow {
+    box-shadow: 0 10px 25px -5px rgba(223, 168, 57, 0.25), 0 8px 10px -6px rgba(223, 168, 57, 0.2);
+}
+
+.wine-shadow {
+    box-shadow: 0 15px 35px -5px rgba(45, 7, 13, 0.25), 0 8px 15px -6px rgba(45, 7, 13, 0.15);
+}
+
+.gold-border-glow {
+    border: 1px solid rgba(244, 196, 102, 0.4);
+    box-shadow: 0 0 20px rgba(244, 196, 102, 0.15);
+}
+
+/* Hindi Devanagari brand title */
+.devanagari-title {
+    font-family: 'Noto Sans Devanagari', 'Yatra One', serif;
+    letter-spacing: 0.02em;
+}
+
+/* 3D Book & Parallax Styling */
+.perspective-1400 {
+    perspective: 1400px;
+}
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.transform-style-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.origin-left-center {
+    transform-origin: left center;
+}
+
+.origin-right-center {
+    transform-origin: right center;
+}
+
+/* Gold Foil & Sheen Reflections */
+.gold-sheen {
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-sheen::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(244, 196, 102, 0.25) 50%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: rotate(30deg) translateY(-100%);
+    transition: transform 0.75s ease;
+}
+
+.gold-sheen:hover::after {
+    transform: rotate(30deg) translateY(100%);
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(10px) rotate(-1.5deg); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: floatReverse 7s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.08); }
+}
+
+.animate-glow {
+    animation: pulseGlow 5s ease-in-out infinite;
+}
+
+@keyframes bookShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+    background: linear-gradient(90deg, #dfa839 0%, #ffe49e 50%, #dfa839 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: bookShimmer 4s linear infinite;
+}
+
+/* GPU-Accelerated Smooth Parallax Layers (0% CPU Load) */
+.gpu-parallax {
+    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.22), 0);
+    will-change: transform;
+}
+
+.gpu-parallax-slow {
+    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.12), 0);
+    will-change: transform;
+}
+
+.gpu-parallax-fast {
+    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.35), 0);
+    will-change: transform;
+}
+
+/* Floating Golden Ember Sparks & Blobs (Pure CSS GPU keyframes - 0% CPU Load) */
+@keyframes sparkFloatHigh {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.6);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.95;
+    }
+    50% {
+        transform: translate3d(24px, -160px, 0) scale(1.15);
+        opacity: 0.85;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate3d(-18px, -340px, 0) scale(0.35);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkFloatMid {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.7);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.9;
+    }
+    55% {
+        transform: translate3d(-20px, -130px, 0) scale(1.2);
+        opacity: 0.8;
+    }
+    85% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate3d(16px, -260px, 0) scale(0.4);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkFloatUltraHigh {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 0;
+    }
+    12% {
+        opacity: 1;
+    }
+    45% {
+        transform: translate3d(-15px, -200px, 0) scale(1.1);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translate3d(22px, -320px, 0) scale(0.8);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate3d(6px, -440px, 0) scale(0.25);
+        opacity: 0;
+    }
+}
+
+.spark-high {
+    animation: sparkFloatHigh 6.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.spark-mid {
+    animation: sparkFloatMid 5.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.spark-ultra {
+    animation: sparkFloatUltraHigh 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* Backwards compatibility */
+.spark-particle {
+    animation: sparkFloatMid 5.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* Staggered continuous delays */
+.spark-delay-0 { animation-delay: 0s; }
+.spark-delay-1 { animation-delay: 0.4s; }
+.spark-delay-2 { animation-delay: 0.8s; }
+.spark-delay-3 { animation-delay: 1.3s; }
+.spark-delay-4 { animation-delay: 1.8s; }
+.spark-delay-5 { animation-delay: 2.3s; }
+.spark-delay-6 { animation-delay: 2.8s; }
+.spark-delay-7 { animation-delay: 3.3s; }
+.spark-delay-8 { animation-delay: 3.8s; }
+.spark-delay-9 { animation-delay: 4.3s; }
+.spark-delay-10 { animation-delay: 4.8s; }
+.spark-delay-11 { animation-delay: 5.3s; }
+.spark-delay-12 { animation-delay: 5.8s; }
+.spark-delay-13 { animation-delay: 6.3s; }
+.spark-delay-14 { animation-delay: 6.8s; }
+.spark-delay-15 { animation-delay: 7.3s; }
+
+/* Living Logo: Book Tree Canopy Breeze & Flutter */
+@keyframes bookCanopyBreeze {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    20% {
+        transform: rotate(1.5deg) scale(1.01) skewX(0.7deg);
+    }
+    45% {
+        transform: rotate(-1.3deg) scale(0.993) skewY(-0.5deg);
+    }
+    70% {
+        transform: rotate(1deg) scale(1.007) skewX(-0.4deg);
+    }
+    88% {
+        transform: rotate(-0.5deg) scale(1);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.animate-book-breeze {
+    transform-origin: 75% 66%;
+    animation: bookCanopyBreeze 4.6s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Individual Flying Golden Birds with Realistic Wing Flapping */
+@keyframes birdWingFlap {
+    0%, 100% {
+        transform: scaleY(1) rotate(0deg);
+    }
+    50% {
+        transform: scaleY(-0.7) rotate(-3deg);
+    }
+}
+
+.animate-wing-flap {
+    transform-origin: center;
+    animation: birdWingFlap 0.38s ease-in-out infinite;
+}
+
+@keyframes birdFlightPath1 {
+    0% {
+        transform: translate3d(-35px, 35px, 0) scale(0.65);
+        opacity: 0;
+    }
+    12% {
+        opacity: 1;
+    }
+    82% {
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate3d(180px, -55px, 0) scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes birdFlightPath2 {
+    0% {
+        transform: translate3d(-45px, 55px, 0) scale(0.5);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.95;
+    }
+    82% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate3d(155px, -35px, 0) scale(0.75);
+        opacity: 0;
+    }
+}
+
+@keyframes birdFlightPath3 {
+    0% {
+        transform: translate3d(-25px, 20px, 0) scale(0.6);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.95;
+    }
+    85% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate3d(200px, -70px, 0) scale(0.85);
+        opacity: 0;
+    }
+}
+
+@keyframes birdFlightPath4 {
+    0% {
+        transform: translate3d(-40px, 45px, 0) scale(0.55);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translate3d(165px, -45px, 0) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes birdFlightPath5 {
+    0% {
+        transform: translate3d(-20px, 10px, 0) scale(0.45);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.85;
+    }
+    88% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate3d(190px, -80px, 0) scale(0.65);
+        opacity: 0;
+    }
+}
+
+.animate-bird-fly-1 {
+    animation: birdFlightPath1 6.2s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.animate-bird-fly-2 {
+    animation: birdFlightPath2 7.0s cubic-bezier(0.35, 0, 0.25, 1) infinite 1.4s;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.animate-bird-fly-3 {
+    animation: birdFlightPath3 7.8s cubic-bezier(0.35, 0, 0.25, 1) infinite 2.8s;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.animate-bird-fly-4 {
+    animation: birdFlightPath4 8.4s cubic-bezier(0.35, 0, 0.25, 1) infinite 4.2s;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.animate-bird-fly-5 {
+    animation: birdFlightPath5 9.0s cubic-bezier(0.35, 0, 0.25, 1) infinite 5.6s;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* ========================================================================= */
+/* 4 PILLARS: Ultra-Smooth, Zero-Lag Professional Cards & Clean Animations   */
+/* ========================================================================= */
+
+.pillar-card-wrap {
+    perspective: 1000px;
+}
+
+.pillar-card {
+    position: relative;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, rgba(42, 6, 12, 0.88) 0%, rgba(18, 2, 4, 0.92) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(244, 196, 102, 0.25);
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.25s ease, 
+                border-color 0.25s ease;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(244, 196, 102, 0.7);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.85),
+        0 0 25px rgba(244, 196, 102, 0.2);
+}
+
+/* Top ambient light edge */
+.card-top-shine {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(244, 196, 102, 0.7), transparent);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pillar-card:hover .card-top-shine {
+    opacity: 1;
+}
+
+/* Scanning laser beam animation for circulation desk */
+@keyframes laserScan {
+    0%, 100% {
+        transform: translateY(-4px);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(24px);
+        opacity: 1;
+    }
+}
+
+.animate-laser-scan {
+    animation: laserScan 2.2s ease-in-out infinite;
+}
+
+/* Slow rotation for watermark mandala */
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spinSlow 50s linear infinite;
+    will-change: transform;
+}
+
+/* Shimmer pulse badge */
+@keyframes beaconPing {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+}
+
+.animate-beacon {
+    animation: beaconPing 2s ease-in-out infinite;
+}
+
+
+
+
+
+
