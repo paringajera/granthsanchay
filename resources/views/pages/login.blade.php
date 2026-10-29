@@ -47,7 +47,6 @@
     <div class="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
          x-data="{
              portalRole: 'librarian',
-             campusBranch: 'central',
              userId: 'librarian@institution.edu',
              password: '••••••••',
              showPassword: false,
@@ -108,20 +107,6 @@
                  }, 950);
              }
          }">
-
-        <!-- Navigation Top Strip: Back to Website & Helpline -->
-        <div class="flex items-center justify-between gap-4 mb-8">
-            <a href="{{ route('home') }}" 
-               class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#240509]/80 border border-[#f4c466]/30 text-xs font-semibold text-[#fcebc7] hover:border-[#f4c466] hover:bg-[#380a10] transition-all backdrop-blur-md shadow-lg group">
-                <span class="group-hover:-translate-x-1 transition-transform">←</span>
-                <span>Back to Home</span>
-            </a>
-
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#240509]/80 border border-[#f4c466]/25 text-xs text-[#fcebc7]/80 backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Portal Status: <strong class="text-white">Active Online</strong></span>
-            </div>
-        </div>
 
         <!-- Central Login Card in Royal Frame -->
         <div class="rounded-3xl bg-gradient-to-b from-[#2d070d]/95 via-[#240509]/95 to-[#1a0205]/98 border-2 border-[#f4c466]/40 shadow-2xl shadow-black/80 relative overflow-hidden backdrop-blur-xl p-6 sm:p-10">
@@ -200,44 +185,10 @@
                     </button>
 
                 </div>
-
-                <!-- Active Role Explainer Banner -->
-                <div class="mt-4 p-3.5 rounded-xl bg-[#1f0407]/80 border border-[#f4c466]/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-                    <div class="flex items-center gap-2.5 text-center sm:text-left">
-                        <span class="w-2 h-2 rounded-full bg-[#f4c466] animate-pulse"></span>
-                        <span class="text-[#fcebc7]/90" x-text="roles[portalRole].desc"></span>
-                    </div>
-
-                    <button type="button" 
-                            @click="fillDemo()" 
-                            class="shrink-0 px-3 py-1 rounded-lg bg-[#5c141e]/80 hover:bg-[#5c141e] border border-[#f4c466]/30 text-[#f4c466] font-bold text-[11px] transition-colors flex items-center gap-1.5 cursor-pointer">
-                        <span>⚡ Fill Demo Login</span>
-                    </button>
-                </div>
             </div>
 
             <!-- Login Form (UI Simulation) -->
             <form @submit.prevent="handleLogin()" class="mt-6 space-y-5 relative z-10">
-                
-                <!-- Campus Branch Dropdown -->
-                <div>
-                    <label class="block text-xs font-semibold text-[#fcebc7] mb-1.5">
-                        Institutional Branch / Campus:
-                    </label>
-                    <div class="relative">
-                        <select x-model="campusBranch" 
-                                class="w-full h-12 bg-[#190205] border border-[#f4c466]/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#f4c466] focus:ring-1 focus:ring-[#f4c466] transition-all appearance-none cursor-pointer">
-                            <option value="central">🏛️ Main Central Campus Library</option>
-                            <option value="engineering">🔬 Faculty of Engineering & Technology</option>
-                            <option value="medical">🏥 Medical Sciences & Healthcare Division</option>
-                            <option value="law">⚖️ School of Law & Public Policy</option>
-                            <option value="public">🏫 Senior Secondary Wing / School Library</option>
-                        </select>
-                        <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#f4c466]">
-                            ▼
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Username / Member ID / Accession ID -->
                 <div>
