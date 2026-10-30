@@ -76,10 +76,6 @@
                 <label class="block text-xs font-bold uppercase tracking-wider text-[#f4c466]">
                     Select Your Portal Access:
                 </label>
-                <span class="text-[11px] text-[#fcebc7]/70 flex items-center gap-1.5">
-                    <span class="text-sm">📖</span>
-                    <span>Real 3D Book: Click tabs or drag corners to flip</span>
-                </span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-[#190205]/95 border border-[#f4c466]/30 shadow-xl">

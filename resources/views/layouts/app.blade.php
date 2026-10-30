@@ -85,7 +85,7 @@
                     </div>
                 </a>
 
-                <!-- Desktop Menu (The exact 8 items requested by user) -->
+                <!-- Desktop Menu (Main Navigation) -->
                 <div class="hidden lg:flex items-center space-x-1 xl:space-x-2">
                     <a href="{{ route('home') }}" 
                        class="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ request()->routeIs('home') ? 'bg-[#5c141e] text-[#f4c466] shadow-sm font-semibold' : 'text-[#fcebc7]/90 hover:text-white hover:bg-white/10' }}">
@@ -115,14 +115,22 @@
                        class="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ request()->routeIs('contact') ? 'bg-[#5c141e] text-[#f4c466] shadow-sm font-semibold' : 'text-[#fcebc7]/90 hover:text-white hover:bg-white/10' }}">
                         Contact
                     </a>
-                    <a href="{{ route('login') }}" 
-                       class="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5 {{ request()->routeIs('login') ? 'bg-[#5c141e] text-[#f4c466] shadow-sm font-semibold' : 'text-[#fcebc7]/90 hover:text-white hover:bg-white/10' }}">
-                        <span>Login</span>
-                    </a>
                 </div>
 
-                <!-- Schedule a Demo CTA Button (Prominent) -->
-                <div class="hidden lg:flex items-center">
+                <!-- Action Buttons: Login & Schedule a Demo (Distinct CTAs) -->
+                <div class="hidden lg:flex items-center gap-2.5 xl:gap-3">
+                    <!-- Login Button (Distinct Portal Action Button) -->
+                    <a href="{{ route('login') }}" 
+                       class="relative group overflow-hidden px-4 xl:px-4.5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 transition-all duration-300 border {{ request()->routeIs('login') 
+                            ? 'bg-gradient-to-r from-[#6e1925] to-[#460d15] text-[#f4c466] border-[#f4c466] shadow-lg shadow-[#f4c466]/20 ring-2 ring-[#f4c466]/40' 
+                            : 'text-[#fcebc7] bg-gradient-to-b from-[#3a0a11]/95 to-[#240509]/95 hover:from-[#520f18] hover:to-[#380a10] hover:text-white border-[#f4c466]/45 hover:border-[#f4c466] shadow-md shadow-black/40 hover:shadow-lg hover:shadow-[#f4c466]/20 hover:scale-[1.03] active:scale-[0.98]' }}">
+                        <svg class="w-4 h-4 text-[#f4c466] transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                        </svg>
+                        <span>Login</span>
+                    </a>
+
+                    <!-- Schedule a Demo CTA Button (Prominent) -->
                     <a href="{{ route('schedule-demo') }}" 
                        class="relative group overflow-hidden px-5 py-2.5 rounded-xl font-bold text-sm text-[#2d070d] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] shadow-lg shadow-[#dfa839]/20 hover:shadow-xl hover:shadow-[#dfa839]/30 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300">
                         <span class="relative z-10 flex items-center gap-2">
@@ -167,10 +175,17 @@
             <a href="{{ route('price') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('price') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Price</a>
             <a href="{{ route('support') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('support') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Support</a>
             <a href="{{ route('contact') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('contact') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Contact</a>
-            <a href="{{ route('login') }}" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-lg text-base font-medium text-[#fcebc7] hover:bg-[#460d15] {{ request()->routeIs('login') ? 'bg-[#5c141e] text-[#f4c466]' : '' }}">Login</a>
-            <div class="pt-3">
-                <a href="{{ route('schedule-demo') }}" @click="mobileMenuOpen = false" class="block text-center w-full py-3 px-4 rounded-xl font-bold text-sm text-[#2d070d] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] shadow-md">
-                    Schedule a demo
+            
+            <div class="pt-3 space-y-2 border-t border-[#460d15]/80 mt-3">
+                <a href="{{ route('login') }}" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-sm border {{ request()->routeIs('login') ? 'bg-[#5c141e] text-[#f4c466] border-[#f4c466]' : 'text-[#fcebc7] bg-[#380a10] border-[#f4c466]/40 hover:border-[#f4c466]' }}">
+                    <svg class="w-4 h-4 text-[#f4c466]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Login</span>
+                </a>
+                <a href="{{ route('schedule-demo') }}" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl font-bold text-sm text-[#2d070d] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] shadow-md">
+                    <span>Schedule a demo</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
             </div>
         </div>
