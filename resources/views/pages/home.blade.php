@@ -229,34 +229,50 @@
                         <!-- Live Statistics Counter Strip (All 4 Box Heights 100% Matched & Single-Line Numbers) -->
                         <div
                             class="pt-6 mt-8 border-t border-[#460d15]/80 grid grid-cols-2 sm:grid-cols-4 gap-3.5 items-stretch text-left">
-                            <div
-                                class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md hover:border-[#f4c466]/50 transition-all shadow-lg flex flex-col justify-between h-full min-h-[96px]">
-                                <span
-                                    class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight">⚡
-                                    3 Sec</span>
-                                <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block">Barcode
-                                    Circulation</span>
+                            <div class="stats-card-wrapper relative group"
+                                onmouseenter="window.playGranthRustle && window.playGranthRustle()">
+                                <div
+                                    class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md group-hover:border-[#f4c466] group-hover:shadow-[0_12px_28px_rgba(244,196,102,0.25)] group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full min-h-[96px] relative overflow-hidden">
+                                    <div class="page-sheen-sweep pointer-events-none"></div>
+                                    <span
+                                        class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight relative z-10">⚡
+                                        3 Sec</span>
+                                    <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block relative z-10">Barcode
+                                        Circulation</span>
+                                </div>
                             </div>
-                            <div
-                                class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md hover:border-[#f4c466]/50 transition-all shadow-lg flex flex-col justify-between h-full min-h-[96px]">
-                                <span
-                                    class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight">50,000+</span>
-                                <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block">Books
-                                    Supported</span>
+                            <div class="stats-card-wrapper relative group"
+                                onmouseenter="window.playGranthRustle && window.playGranthRustle()">
+                                <div
+                                    class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md group-hover:border-[#f4c466] group-hover:shadow-[0_12px_28px_rgba(244,196,102,0.25)] group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full min-h-[96px] relative overflow-hidden">
+                                    <div class="page-sheen-sweep pointer-events-none"></div>
+                                    <span
+                                        class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight relative z-10">50,000+</span>
+                                    <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block relative z-10">Books
+                                        Supported</span>
+                                </div>
                             </div>
-                            <div
-                                class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md hover:border-[#f4c466]/50 transition-all shadow-lg flex flex-col justify-between h-full min-h-[96px]">
-                                <span
-                                    class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight">24/7</span>
-                                <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block">Mobile OPAC
-                                    Portal</span>
+                            <div class="stats-card-wrapper relative group"
+                                onmouseenter="window.playGranthRustle && window.playGranthRustle()">
+                                <div
+                                    class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md group-hover:border-[#f4c466] group-hover:shadow-[0_12px_28px_rgba(244,196,102,0.25)] group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full min-h-[96px] relative overflow-hidden">
+                                    <div class="page-sheen-sweep pointer-events-none"></div>
+                                    <span
+                                        class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight relative z-10">24/7</span>
+                                    <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block relative z-10">Mobile OPAC
+                                        Portal</span>
+                                </div>
                             </div>
-                            <div
-                                class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md hover:border-[#f4c466]/50 transition-all shadow-lg flex flex-col justify-between h-full min-h-[96px]">
-                                <span
-                                    class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight">100%</span>
-                                <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block">NAAC / NBA
-                                    Ready</span>
+                            <div class="stats-card-wrapper relative group"
+                                onmouseenter="window.playGranthRustle && window.playGranthRustle()">
+                                <div
+                                    class="bg-[#240509]/85 p-3.5 sm:p-4 rounded-2xl border border-[#f4c466]/25 backdrop-blur-md group-hover:border-[#f4c466] group-hover:shadow-[0_12px_28px_rgba(244,196,102,0.25)] group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full min-h-[96px] relative overflow-hidden">
+                                    <div class="page-sheen-sweep pointer-events-none"></div>
+                                    <span
+                                        class="text-xl sm:text-2xl xl:text-3xl font-black text-[#f4c466] block font-mono whitespace-nowrap tracking-tight relative z-10">100%</span>
+                                    <span class="text-xs text-[#fcebc7]/80 font-medium leading-snug mt-1.5 block relative z-10">NAAC / NBA
+                                        Ready</span>
+                                </div>
                             </div>
                         </div>
 

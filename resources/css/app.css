@@ -629,8 +629,61 @@ h1, h2, h3, h4, h5, h6 {
     animation: beaconPing 2s ease-in-out infinite;
 }
 
+/* ========================================================================= */
+/* SACRED GRANTH FOLIO CARD HOVER & SHEEN SWEEP ANIMATIONS                  */
+/* ========================================================================= */
 
+.page-sheen-sweep {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.38) 50%, transparent 65%);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease, transform 0.8s ease;
+    z-index: 15;
+    pointer-events: none;
+}
 
+.support-card-wrapper:hover .page-sheen-sweep,
+.stats-card-wrapper:hover .page-sheen-sweep,
+.pricing-card-wrapper:hover .page-sheen-sweep,
+.group:hover .page-sheen-sweep {
+    opacity: 1;
+    transform: translateX(100%);
+}
 
+.page-curl-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    z-index: 25;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
 
+.page-curl-fold {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 34px 34px;
+    border-color: transparent transparent #dfa839 transparent;
+    filter: drop-shadow(-3px -3px 4px rgba(0, 0, 0, 0.45));
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
+.support-card-wrapper:hover .page-curl-corner,
+.group:hover .page-curl-corner {
+    width: 54px;
+    height: 54px;
+}
+
+.support-card-wrapper:hover .page-curl-fold,
+.group:hover .page-curl-fold {
+    border-width: 0 0 52px 52px;
+    filter: drop-shadow(-5px -5px 8px rgba(0, 0, 0, 0.65));
+}
