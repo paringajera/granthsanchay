@@ -181,7 +181,7 @@
                                 <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-[1.12]">
                                     Transform Your Library with
                                     <span
-                                        class="block sm:text-6xl devanagari-title text-transparent bg-clip-text bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] drop-shadow-[0_4px_16px_rgba(244,196,102,0.35)] mt-1">
+                                        class="block sm:text-6xl devanagari-title text-transparent bg-clip-text bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] drop-shadow-[0_4px_16px_rgba(244,196,102,0.35)] mt-5">
                                         ग्रंथसंचय...
                                     </span>
                                 </h1>
@@ -923,27 +923,27 @@
     <!-- INTERACTIVE BARCODE CIRCULATION SIMULATOR -->
     <!-- ========================================================================= -->
     <section class="py-20 bg-[#fdfaf3] relative" x-data="{
-                     isScanning: false,
-                     scanSuccess: false,
-                     scannedBook: null,
-                     activeTab: 'demo-scan',
-                     simulateScan() {
-                         this.isScanning = true;
-                         this.scanSuccess = false;
-                         setTimeout(() => {
-                             this.isScanning = false;
-                             this.scanSuccess = true;
-                             this.scannedBook = {
-                                 title: 'Atomic Habits',
-                                 author: 'James Clear',
-                                 accNo: 'GSA-04562',
-                                 member: 'Rajnish Kumar (GS-S11409)',
-                                 dueDate: '14 Days (Nov 11, 2026)',
-                                 status: 'Issued Successfully'
-                             };
-                         }, 1200);
-                     }
-                 }">
+                             isScanning: false,
+                             scanSuccess: false,
+                             scannedBook: null,
+                             activeTab: 'demo-scan',
+                             simulateScan() {
+                                 this.isScanning = true;
+                                 this.scanSuccess = false;
+                                 setTimeout(() => {
+                                     this.isScanning = false;
+                                     this.scanSuccess = true;
+                                     this.scannedBook = {
+                                         title: 'Atomic Habits',
+                                         author: 'James Clear',
+                                         accNo: 'GSA-04562',
+                                         member: 'Rajnish Kumar (GS-S11409)',
+                                         dueDate: '14 Days (Nov 11, 2026)',
+                                         status: 'Issued Successfully'
+                                     };
+                                 }, 1200);
+                             }
+                         }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -1100,18 +1100,18 @@
     <!-- INTERACTIVE ROI & TIME SAVINGS CALCULATOR -->
     <!-- ========================================================================= -->
     <section class="py-20 bg-gradient-to-b from-[#240509] via-[#380a10] to-[#240509] text-white" x-data="{
-                     bookCount: 15000,
-                     studentCount: 2000,
-                     get hoursSaved() {
-                         return Math.round((this.studentCount * 0.08) + (this.bookCount * 0.005));
-                     },
-                     get lostBooksSaved() {
-                         return Math.round(this.bookCount * 0.02);
-                     },
-                     get moneySaved() {
-                         return (this.lostBooksSaved * 350).toLocaleString('en-IN');
-                     }
-                 }">
+                             bookCount: 15000,
+                             studentCount: 2000,
+                             get hoursSaved() {
+                                 return Math.round((this.studentCount * 0.08) + (this.bookCount * 0.005));
+                             },
+                             get lostBooksSaved() {
+                                 return Math.round(this.bookCount * 0.02);
+                             },
+                             get moneySaved() {
+                                 return (this.lostBooksSaved * 350).toLocaleString('en-IN');
+                             }
+                         }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
