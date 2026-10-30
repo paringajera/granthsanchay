@@ -109,16 +109,275 @@
         </div>
 
         <!-- ================================================================= -->
-        <!-- THE PHYSICAL OPEN GRANTH BOOK CONTAINER (REAL 3D PAGE FLIP)       -->
+        <!-- MOBILE SACRED LOGIN PORTALS (NO LEFT SIDE OVERVIEW, NO BLACK LINE) -->
         <!-- ================================================================= -->
-        <div class="real-book-stage relative w-full max-w-4xl mx-auto select-none">
+        <div class="block md:hidden w-full max-w-md mx-auto select-none">
+            <div class="book-leather-casing relative rounded-3xl bg-gradient-to-b from-[#2d070d] via-[#1a0205] to-[#120204] border-2 border-[#dfa839]/40 shadow-[0_20px_50px_rgba(0,0,0,0.9)] p-2.5 sm:p-3">
+
+                <!-- Mobile Role 1: Librarian / Staff Sign In -->
+                <div id="mobile-panel-librarian" class="mobile-login-panel">
+                    <div class="page-content-wrapper rounded-2xl flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden bg-gradient-to-bl from-[#240509] via-[#1c0307] to-[#140204] text-white border border-[#f4c466]/20 shadow-xl">
+                        <!-- Golden Corner Filigrees -->
+                        <div class="corner-filigree corner-tl"></div>
+                        <div class="corner-filigree corner-tr"></div>
+                        <div class="corner-filigree corner-bl"></div>
+                        <div class="corner-filigree corner-br"></div>
+
+                        <div>
+                            <!-- Folio Header -->
+                            <div class="flex items-center justify-between pb-3 border-b border-[#f4c466]/20 text-xs">
+                                <span class="text-[#f4c466] font-bold">Librarian & Staff Portal</span>
+                                <span class="font-mono text-[10px] text-[#fcebc7]/60 bg-[#160204] px-2 py-0.5 rounded border border-[#f4c466]/20">FOLIO 02</span>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-lg font-bold text-white">Staff Sign In</h4>
+                                    <span class="text-[10px] text-[#f4c466] bg-[#380a10] px-2 py-0.5 rounded-full border border-[#f4c466]/30">Circulation Active</span>
+                                </div>
+                                <p class="text-xs text-[#fcebc7]/70 mt-1">Enter authorized institutional credentials to access accession register.</p>
+                            </div>
+
+                            <!-- Form -->
+                            <form onsubmit="handleFormLogin(event, 'Librarian & Staff')" class="mt-5 space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-[#fcebc7] mb-1">
+                                        Librarian ID / Official Email:
+                                    </label>
+                                    <input type="text" 
+                                           id="mobile_librarian_user"
+                                           value="librarian@institution.edu"
+                                           required
+                                           class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-xs font-semibold text-[#fcebc7]">
+                                            Password / Security PIN:
+                                        </label>
+                                        <a href="javascript:void(0)" onclick="alert('For password resets, contact IT Helpdesk at +91 93289 38959.')" class="text-[11px] text-[#f4c466] hover:underline">
+                                            Forgot PIN?
+                                        </a>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="password" 
+                                               id="mobile_librarian_pass"
+                                               value="LibrarianSecure#2026"
+                                               required
+                                               class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 pr-10 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                        <button type="button" onclick="togglePasswordView('mobile_librarian_pass', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#fcebc7]/70 hover:text-[#f4c466]">
+                                            👁️
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs pt-1">
+                                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                                        <input type="checkbox" checked class="w-4 h-4 rounded bg-[#190205] border-[#f4c466]/40 text-[#f4c466]">
+                                        <span class="text-[#fcebc7]/85 text-[11px]">Remember this library terminal</span>
+                                    </label>
+                                    <span class="text-[10px] text-[#fcebc7]/50 font-mono">Timeout: 15m</span>
+                                </div>
+
+                                <div class="pt-2">
+                                    <button type="submit" 
+                                            class="w-full py-3.5 px-5 rounded-xl font-bold text-sm text-[#240509] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] hover:from-[#fff0c2] hover:via-[#fad485] hover:to-[#ebba52] shadow-lg shadow-[#dfa839]/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                        <span>Sign In to Library Portal</span>
+                                        <span>→</span>
+                                    </button>
+                                </div>
+
+                                <div id="mobile-librarian-alert" class="hidden p-3 rounded-xl bg-emerald-900/90 border border-emerald-400/50 text-emerald-100 text-xs shadow-lg"></div>
+                            </form>
+                        </div>
+
+                        <!-- Folio Footer -->
+                        <div class="pt-3 mt-4 border-t border-[#f4c466]/20 flex items-center justify-between text-[11px] text-[#fcebc7]/60">
+                            <span>Terminal Status: <strong class="text-emerald-400">Online</strong></span>
+                            <span class="font-mono">MARC-21 • ISO 27001</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Role 2: Admin Sign In -->
+                <div id="mobile-panel-admin" class="mobile-login-panel hidden">
+                    <div class="page-content-wrapper rounded-2xl flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden bg-gradient-to-bl from-[#240509] via-[#1c0307] to-[#140204] text-white border border-[#f4c466]/20 shadow-xl">
+                        <div class="corner-filigree corner-tl"></div>
+                        <div class="corner-filigree corner-tr"></div>
+                        <div class="corner-filigree corner-bl"></div>
+                        <div class="corner-filigree corner-br"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between pb-3 border-b border-[#f4c466]/20 text-xs">
+                                <span class="text-[#f4c466] font-bold">Institutional Admin Portal</span>
+                                <span class="font-mono text-[10px] text-[#fcebc7]/60 bg-[#160204] px-2 py-0.5 rounded border border-[#f4c466]/20">FOLIO 04</span>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-lg font-bold text-white">Administrator Sign In</h4>
+                                    <span class="text-[10px] text-[#f4c466] bg-[#380a10] px-2 py-0.5 rounded-full border border-[#f4c466]/30">Governance Mode</span>
+                                </div>
+                                <p class="text-xs text-[#fcebc7]/70 mt-1">Institutional principals & directors governance authentication terminal.</p>
+                            </div>
+
+                            <form onsubmit="handleFormLogin(event, 'Institutional Admin')" class="mt-5 space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-[#fcebc7] mb-1">
+                                        Administrator Username / Email:
+                                    </label>
+                                    <input type="text" 
+                                           id="mobile_admin_user"
+                                           value="principal@campus.edu"
+                                           required
+                                           class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-xs font-semibold text-[#fcebc7]">
+                                            Password / Security PIN:
+                                        </label>
+                                        <a href="javascript:void(0)" onclick="alert('For administrator password recovery, contact Granth Sanchay Security Support.')" class="text-[11px] text-[#f4c466] hover:underline">
+                                            Recovery PIN?
+                                        </a>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="password" 
+                                               id="mobile_admin_pass"
+                                               value="AdminGov#2026"
+                                               required
+                                               class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 pr-10 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                        <button type="button" onclick="togglePasswordView('mobile_admin_pass', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#fcebc7]/70 hover:text-[#f4c466]">
+                                            👁️
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs pt-1">
+                                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                                        <input type="checkbox" checked class="w-4 h-4 rounded bg-[#190205] border-[#f4c466]/40 text-[#f4c466]">
+                                        <span class="text-[#fcebc7]/85 text-[11px]">Enforce dual-signature logging</span>
+                                    </label>
+                                    <span class="text-[10px] text-[#fcebc7]/50 font-mono">Audit: Enabled</span>
+                                </div>
+
+                                <div class="pt-2">
+                                    <button type="submit" 
+                                            class="w-full py-3.5 px-5 rounded-xl font-bold text-sm text-[#240509] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] hover:from-[#fff0c2] hover:via-[#fad485] hover:to-[#ebba52] shadow-lg shadow-[#dfa839]/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                        <span>Sign In to Library Portal</span>
+                                        <span>→</span>
+                                    </button>
+                                </div>
+
+                                <div id="mobile-admin-alert" class="hidden p-3 rounded-xl bg-emerald-900/90 border border-emerald-400/50 text-emerald-100 text-xs shadow-lg"></div>
+                            </form>
+                        </div>
+
+                        <div class="pt-3 mt-4 border-t border-[#f4c466]/20 flex items-center justify-between text-[11px] text-[#fcebc7]/60">
+                            <span>Security Level: <strong class="text-[#f4c466]">Executive Level 1</strong></span>
+                            <span class="font-mono">Granth Sanchay Cloud</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Role 3: Student OPAC Sign In -->
+                <div id="mobile-panel-student" class="mobile-login-panel hidden">
+                    <div class="page-content-wrapper rounded-2xl flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden bg-gradient-to-bl from-[#240509] via-[#1c0307] to-[#140204] text-white border border-[#f4c466]/20 shadow-xl">
+                        <div class="corner-filigree corner-tl"></div>
+                        <div class="corner-filigree corner-tr"></div>
+                        <div class="corner-filigree corner-bl"></div>
+                        <div class="corner-filigree corner-br"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between pb-3 border-b border-[#f4c466]/20 text-xs">
+                                <span class="text-[#f4c466] font-bold">Student & Member Web OPAC</span>
+                                <span class="font-mono text-[10px] text-[#fcebc7]/60 bg-[#160204] px-2 py-0.5 rounded border border-[#f4c466]/20">FOLIO 06</span>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-lg font-bold text-white">Member Sign In</h4>
+                                    <span class="text-[10px] text-[#f4c466] bg-[#380a10] px-2 py-0.5 rounded-full border border-[#f4c466]/30">Student OPAC</span>
+                                </div>
+                                <p class="text-xs text-[#fcebc7]/70 mt-1">Enter your Institutional Roll No. or Member PRN to view issued books.</p>
+                            </div>
+
+                            <form onsubmit="handleFormLogin(event, 'Student & Member')" class="mt-5 space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-[#fcebc7] mb-1">
+                                        Member PRN / Roll No. / Email:
+                                    </label>
+                                    <input type="text" 
+                                           id="mobile_student_user"
+                                           value="student.opac@college.edu"
+                                           required
+                                           class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-xs font-semibold text-[#fcebc7]">
+                                            Password / PIN:
+                                        </label>
+                                        <a href="javascript:void(0)" onclick="alert('Students can reset their OPAC password at the library counter.')" class="text-[11px] text-[#f4c466] hover:underline">
+                                            Forgot PIN?
+                                        </a>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="password" 
+                                               id="mobile_student_pass"
+                                               value="StudentPass#2026"
+                                               required
+                                               class="w-full h-11 bg-[#190205] border border-[#f4c466]/35 rounded-xl px-3.5 pr-10 text-sm text-white focus:outline-none focus:border-[#f4c466] transition-all">
+                                        <button type="button" onclick="togglePasswordView('mobile_student_pass', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#fcebc7]/70 hover:text-[#f4c466]">
+                                            👁️
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs pt-1">
+                                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                                        <input type="checkbox" checked class="w-4 h-4 rounded bg-[#190205] border-[#f4c466]/40 text-[#f4c466]">
+                                        <span class="text-[#fcebc7]/85 text-[11px]">Remember my student login</span>
+                                    </label>
+                                    <span class="text-[10px] text-[#fcebc7]/50 font-mono">OPAC 2026</span>
+                                </div>
+
+                                <div class="pt-2">
+                                    <button type="submit" 
+                                            class="w-full py-3.5 px-5 rounded-xl font-bold text-sm text-[#240509] bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] hover:from-[#fff0c2] hover:via-[#fad485] hover:to-[#ebba52] shadow-lg shadow-[#dfa839]/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                        <span>Sign In to Library Portal</span>
+                                        <span>→</span>
+                                    </button>
+                                </div>
+
+                                <div id="mobile-student-alert" class="hidden p-3 rounded-xl bg-emerald-900/90 border border-emerald-400/50 text-emerald-100 text-xs shadow-lg"></div>
+                            </form>
+                        </div>
+
+                        <div class="pt-3 mt-4 border-t border-[#f4c466]/20 flex items-center justify-between text-[11px] text-[#fcebc7]/60">
+                            <span>OPAC Gateway: <strong class="text-emerald-400">Available</strong></span>
+                            <span class="font-mono">Web OPAC v3.4</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- THE PHYSICAL OPEN GRANTH BOOK CONTAINER (DESKTOP REAL 3D FLIP)    -->
+        <!-- ================================================================= -->
+        <div class="real-book-stage relative w-full max-w-4xl mx-auto select-none hidden md:block">
             
             <!-- Hard Leather Book Outer Casing / Ledger Cover -->
             <div class="book-leather-casing relative rounded-3xl bg-gradient-to-b from-[#2d070d] via-[#1a0205] to-[#120204] border-2 border-[#dfa839]/40 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95)] p-2 sm:p-4">
                 
                 <!-- Central Spine Depth Gutter Ribbon (Real Book Center Fold) -->
-                <div class="book-central-spine-shadow absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 pointer-events-none z-30"></div>
-                <div class="book-silk-bookmark absolute -top-3 left-1/2 -translate-x-1/2 w-3.5 h-14 bg-gradient-to-b from-[#dfa839] via-[#8c1d28] to-[#dfa839] rounded-b-md shadow-md pointer-events-none z-40 opacity-90"></div>
+                <div class="book-central-spine-shadow absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 pointer-events-none z-30 hidden md:block"></div>
+                <div class="book-silk-bookmark absolute -top-3 left-1/2 -translate-x-1/2 w-3.5 h-14 bg-gradient-to-b from-[#dfa839] via-[#8c1d28] to-[#dfa839] rounded-b-md shadow-md pointer-events-none z-40 opacity-90 hidden md:block"></div>
 
                 <!-- StPageFlip FlipBook Root Element -->
                 <div id="granthBook" class="granth-flipbook relative mx-auto overflow-hidden">
@@ -589,6 +848,7 @@
 // =========================================================================
 
 let granthBookFlip = null;
+let currentActiveRole = 'librarian';
 
 // Synthesizes crisp physical paper turn sound via Web Audio API
 window.playGranthRustle = function() {
@@ -631,15 +891,16 @@ window.playGranthRustle = function() {
 function initGranthFlipBook() {
     const bookEl = document.getElementById('granthBook');
     if (!bookEl || !window.St || !window.St.PageFlip) return;
+    
+    // Only initialize 3D flipbook on desktop view (md: 768px+)
+    if (window.innerWidth < 768) return;
 
     try {
-        const isMobile = window.innerWidth < 768;
-
         granthBookFlip = new St.PageFlip(bookEl, {
-            width: isMobile ? 360 : 440,
-            height: isMobile ? 520 : 560,
+            width: 440,
+            height: 560,
             size: 'stretch',
-            minWidth: 300,
+            minWidth: 320,
             maxWidth: 480,
             minHeight: 480,
             maxHeight: 600,
@@ -661,11 +922,17 @@ function initGranthFlipBook() {
         granthBookFlip.on('flip', function(e) {
             const pageIndex = e.data;
             if (pageIndex === 0 || pageIndex === 1) {
+                currentActiveRole = 'librarian';
                 updateTabHighlight('librarian');
+                showMobileLoginRole('librarian');
             } else if (pageIndex === 2 || pageIndex === 3) {
+                currentActiveRole = 'admin';
                 updateTabHighlight('admin');
+                showMobileLoginRole('admin');
             } else if (pageIndex === 4 || pageIndex === 5) {
+                currentActiveRole = 'student';
                 updateTabHighlight('student');
+                showMobileLoginRole('student');
             }
         });
 
@@ -695,7 +962,30 @@ function updateTabHighlight(role) {
     });
 }
 
+function showMobileLoginRole(role) {
+    const roles = ['librarian', 'admin', 'student'];
+    roles.forEach(r => {
+        const panel = document.getElementById('mobile-panel-' + r);
+        if (!panel) return;
+        if (r === role) {
+            panel.classList.remove('hidden');
+        } else {
+            panel.classList.add('hidden');
+        }
+    });
+}
+
 function flipBookToRole(role) {
+    currentActiveRole = role;
+    updateTabHighlight(role);
+    showMobileLoginRole(role);
+
+    // If mobile view, play paper rustle and return
+    if (window.innerWidth < 768) {
+        window.playGranthRustle();
+        return;
+    }
+
     if (!granthBookFlip) return;
 
     let targetPage = 0;
@@ -708,7 +998,6 @@ function flipBookToRole(role) {
 
     window.playGranthRustle();
     granthBookFlip.flip(targetPage);
-    updateTabHighlight(role);
 }
 
 function protectInputInteractions() {
@@ -766,6 +1055,9 @@ if (document.readyState === 'loading') {
 }
 
 window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768 && !granthBookFlip) {
+        initGranthFlipBook();
+    }
     protectInputInteractions();
 });
 </script>
@@ -863,7 +1155,27 @@ window.addEventListener('resize', function() {
     -webkit-backface-visibility: hidden;
 }
 
+/* Mobile Portal Animation and Cleanup */
+.mobile-login-panel {
+    animation: fadeInPortal 0.3s ease-out forwards;
+}
+
+@keyframes fadeInPortal {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 767px) {
+    .book-central-spine-shadow,
+    .book-silk-bookmark {
+        display: none !important;
+    }
     .granth-flipbook {
         min-height: 520px;
     }
