@@ -247,20 +247,27 @@ h1, h2, h3, h4, h5, h6 {
     animation: bookShimmer 4s linear infinite;
 }
 
-/* GPU-Accelerated Smooth Parallax Layers (0% CPU Load) */
-.gpu-parallax {
-    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.22), 0);
-    will-change: transform;
+/* GPU-Accelerated Zero-Lag Compositor Parallax (65% Scroll Speed, 0% Zoom) */
+@keyframes granthParallaxScroll {
+    from {
+        transform: translate3d(0, 0px, 0);
+    }
+    to {
+        transform: translate3d(0, 490px, 0);
+    }
 }
 
-.gpu-parallax-slow {
-    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.12), 0);
+.granth-parallax-anim {
     will-change: transform;
+    transform: translate3d(0, 0px, 0);
 }
 
-.gpu-parallax-fast {
-    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.35), 0);
-    will-change: transform;
+@supports (animation-timeline: scroll()) {
+    .granth-parallax-anim {
+        animation: granthParallaxScroll linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0px 1400px;
+    }
 }
 
 /* Floating Golden Ember Sparks & Blobs (Pure CSS GPU keyframes - 0% CPU Load) */
@@ -540,9 +547,9 @@ h1, h2, h3, h4, h5, h6 {
 .pillar-card {
     position: relative;
     border-radius: 1.5rem;
-    background: linear-gradient(145deg, rgba(42, 6, 12, 0.88) 0%, rgba(18, 2, 4, 0.92) 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(145deg, rgba(42, 6, 12, 0.94) 0%, rgba(18, 2, 4, 0.96) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(244, 196, 102, 0.25);
     box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -550,6 +557,7 @@ h1, h2, h3, h4, h5, h6 {
                 border-color 0.25s ease;
     overflow: hidden;
     will-change: transform;
+    contain: paint;
 }
 
 .pillar-card:hover {

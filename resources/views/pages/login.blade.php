@@ -12,9 +12,10 @@
     <!-- Atmospheric Sacred Granth Parallax Background Layer -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
         <!-- Open Granth Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center opacity-30 will-change-transform" 
-             style="background-image: url('{{ asset('images/open-granth-real.jpg') }}'); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 pointer-events-none" 
+             style="background-image: url('{{ asset('images/open-granth-real.jpg') }}');">
         </div>
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#120204] pointer-events-none"></div>
 
         <!-- Atmospheric Vignettes & Contrast Overlays -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#140204]/85 via-[#180205]/80 to-[#120204]/95"></div>
@@ -888,8 +889,8 @@ let granthBookFlip = null;
 let mobileBookFlip = null;
 let currentActiveRole = 'librarian';
 
-// Synthesizes crisp physical paper turn sound via Web Audio API
-window.playGranthRustle = function() {
+// Synthesizes crisp physical paper turn sound via Web Audio API (Uses shared singleton)
+window.playGranthRustle = window.playGranthRustle || function() {
     try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (!AudioCtx) return;

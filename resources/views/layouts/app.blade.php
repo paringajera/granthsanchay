@@ -27,9 +27,9 @@
 </head>
 <body class="bg-[#fdfaf3] text-[#2b1d1f] antialiased flex flex-col min-h-screen" x-data="{ mobileMenuOpen: false }">
 
-    <!-- Global Scroll Progress Indicator Bar -->
+    <!-- Global Scroll Progress Indicator Bar (Pure GPU Compositor ScaleX) -->
     <div class="fixed top-0 left-0 right-0 h-1 bg-black/20 z-[100] pointer-events-none">
-        <div id="scrollProgressBar" class="h-full bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] w-0 transition-all duration-75 shadow-[0_0_12px_#f4c466]"></div>
+        <div id="scrollProgressBar" class="h-full w-full bg-gradient-to-r from-[#ffe49e] via-[#f4c466] to-[#dfa839] origin-left scale-x-0 will-change-transform shadow-[0_0_12px_#f4c466]"></div>
     </div>
 
     <!-- Top Announcement & Contact Bar -->
@@ -369,18 +369,20 @@
     </footer>
 
     <script>
-        // High-Performance 60fps / 120fps GPU Scroll Sync (Zero CPU Lag)
+        // High-Performance 60fps/120fps GPU Scroll Sync (Zero DOM Reflows, Zero Style Recalculation)
         (function() {
+            const bar = document.getElementById('scrollProgressBar');
             let ticking = false;
+
             function onScroll() {
                 const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-                const maxScroll = (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 1;
-                const progress = Math.min(100, Math.max(0, (scrollY / maxScroll) * 100));
                 
-                document.documentElement.style.setProperty('--scroll-y', scrollY + 'px');
-                
-                const bar = document.getElementById('scrollProgressBar');
-                if (bar) bar.style.width = progress + '%';
+                // Hardware-Composited Progress Bar (ScaleX, zero layout reflows)
+                if (bar) {
+                    const maxScroll = (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 1;
+                    const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+                    bar.style.transform = `scaleX(${progress})`;
+                }
                 
                 ticking = false;
             }
@@ -393,6 +395,77 @@
             }, { passive: true });
 
             onScroll();
+
+            // Native CSS Scroll-Timeline Feature Check with Pure GPU Fallback (65% Scroll Speed)
+            const parallaxBg = document.getElementById('granthParallaxBg');
+            const hasScrollTimeline = window.CSS && CSS.supports && (
+                CSS.supports('animation-timeline', 'scroll()') || 
+                CSS.supports('animation-timeline', 'scroll(root)')
+            );
+            if (parallaxBg && !hasScrollTimeline) {
+                let pTicking = false;
+                window.addEventListener('scroll', function() {
+                    if (!pTicking) {
+                        window.requestAnimationFrame(function() {
+                            const y = window.pageYOffset || document.documentElement.scrollTop;
+                            if (y < 1400) {
+                                parallaxBg.style.transform = `translate3d(0, ${(y * 0.35).toFixed(1)}px, 0)`;
+                            }
+                            pTicking = false;
+                        });
+                        pTicking = true;
+                    }
+                }, { passive: true });
+            }
+        })();
+
+        // Shared Singleton Web Audio Synthesizer (Eliminates AudioContext / Memory Leaks)
+        (function() {
+            let audioCtx = null;
+            let rustleBuffer = null;
+
+            window.playGranthRustle = function() {
+                try {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioCtx) return;
+                    
+                    if (!audioCtx) {
+                        audioCtx = new AudioCtx();
+                    }
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+
+                    if (!rustleBuffer) {
+                        const bufferSize = Math.floor(audioCtx.sampleRate * 0.16);
+                        rustleBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                        const data = rustleBuffer.getChannelData(0);
+                        for (let i = 0; i < bufferSize; i++) {
+                            data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.35));
+                        }
+                    }
+
+                    const noise = audioCtx.createBufferSource();
+                    noise.buffer = rustleBuffer;
+
+                    const filter = audioCtx.createBiquadFilter();
+                    filter.type = 'bandpass';
+                    filter.frequency.setValueAtTime(1400, audioCtx.currentTime);
+                    filter.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.16);
+                    filter.Q.value = 1.6;
+
+                    const gain = audioCtx.createGain();
+                    gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.035, audioCtx.currentTime + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.16);
+
+                    noise.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    noise.start(audioCtx.currentTime);
+                } catch (e) {}
+            };
         })();
     </script>
     @stack('scripts')

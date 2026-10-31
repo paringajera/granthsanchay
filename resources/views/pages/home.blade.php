@@ -12,10 +12,15 @@
         <!-- CONTINUOUS SACRED GRANTH PARALLAX BACKGROUND (Extends through Hero down into 4 Pillars) -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
 
-            <!-- Open Granth Background Image (Slow Parallax extending behind 4 Pillars boxes) -->
-            <div class="absolute -top-[5%] left-0 right-0 h-[145vh] min-h-[1050px] bg-cover bg-center opacity-85 will-change-transform"
-                style="background-image: url('{{ asset('images/open-granth-real.jpg') }}'); transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.38), 0) scale(1.12); -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%); mask-image: linear-gradient(to bottom, black 72%, transparent 98%);">
+            <!-- Open Granth Background Image (Compositor-Thread Zero-Lag Parallax, 65% Speed, 0% Zoom) -->
+            <div id="granthParallaxBg" class="absolute top-0 left-0 right-0 h-[112vh] min-h-[860px] bg-cover bg-center opacity-85 pointer-events-none granth-parallax-anim"
+                style="background-image: url('{{ asset('images/open-granth-real.jpg') }}');">
+                <!-- Soft Bottom Fade to prevent hard edge when translating down -->
+                <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#120204]/70 to-[#120204] pointer-events-none"></div>
             </div>
+
+            <!-- Natural Seamless Bottom Gradient Transition (Zero Mask Thrashing) -->
+            <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[#120204]/70 to-[#120204] pointer-events-none"></div>
 
             <!-- Continuous Atmospheric Vignette & Contrast Gradients (Zero Divider Line) -->
             <div
@@ -74,87 +79,22 @@
         <!-- HERO SECTION (Seamless, Transparent Background) -->
         <section class="relative z-10 pt-12 pb-16 min-h-[90vh] flex items-center" id="hero-section">
 
-            <!-- Floating Golden Ember Sparks & Luminous Blobs (Pure CSS GPU, 0% CPU Load) -->
+            <!-- Floating Golden Ember Sparks & Luminous Blobs (Curated GPU keyframes, Zero Lag) -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <!-- Center Spine Core Stream (Rising Ultra High) -->
-                <div
-                    class="absolute bottom-[30%] left-[50%] w-3 h-3 rounded-full bg-[#f4c466] shadow-[0_0_14px_#f4c466,0_0_28px_#dfa839] spark-ultra spark-delay-0">
-                </div>
-                <div
-                    class="absolute bottom-[32%] left-[49%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_10px_#ffe49e] spark-high spark-delay-2">
-                </div>
-                <div
-                    class="absolute bottom-[28%] left-[51%] w-2.5 h-2.5 rounded-full bg-[#f4c466] shadow-[0_0_12px_#f4c466] spark-ultra spark-delay-5">
-                </div>
-                <div
-                    class="absolute bottom-[34%] left-[50%] w-1.5 h-1.5 rounded-full bg-[#ffffff] shadow-[0_0_8px_#ffe49e] spark-high spark-delay-8">
-                </div>
-                <div
-                    class="absolute bottom-[29%] left-[49.5%] w-3.5 h-3.5 rounded-full bg-[#f4c466]/90 shadow-[0_0_16px_#f4c466,0_0_32px_#dfa839] spark-ultra spark-delay-11">
-                </div>
-                <div
-                    class="absolute bottom-[31%] left-[50.5%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_8px_#ffe49e] spark-mid spark-delay-14">
-                </div>
+                <!-- Center Core Sparks -->
+                <div class="absolute bottom-[30%] left-[50%] w-2.5 h-2.5 rounded-full bg-[#f4c466] shadow-[0_0_10px_#f4c466] spark-ultra spark-delay-0"></div>
+                <div class="absolute bottom-[33%] left-[49%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_8px_#ffe49e] spark-high spark-delay-3"></div>
+                <div class="absolute bottom-[28%] left-[51%] w-2 h-2 rounded-full bg-[#f4c466] shadow-[0_0_8px_#f4c466] spark-mid spark-delay-6"></div>
 
-                <!-- Left Page Embers (Floating High & Mid) -->
-                <div
-                    class="absolute bottom-[31%] left-[46%] w-2 h-2 rounded-full bg-[#f4c466] shadow-[0_0_10px_#f4c466] spark-high spark-delay-1">
-                </div>
-                <div
-                    class="absolute bottom-[27%] left-[44%] w-3 h-3 rounded-full bg-[#dfa839] shadow-[0_0_14px_#dfa839] spark-ultra spark-delay-4">
-                </div>
-                <div
-                    class="absolute bottom-[33%] left-[47%] w-1.5 h-1.5 rounded-full bg-[#ffe49e] shadow-[0_0_6px_#ffe49e] spark-mid spark-delay-6">
-                </div>
-                <div
-                    class="absolute bottom-[30%] left-[43%] w-2.5 h-2.5 rounded-full bg-[#f4c466] shadow-[0_0_12px_#f4c466] spark-high spark-delay-9">
-                </div>
-                <div
-                    class="absolute bottom-[35%] left-[45%] w-1 h-1 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-ultra spark-delay-12">
-                </div>
-                <div
-                    class="absolute bottom-[29%] left-[41%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_8px_#ffe49e] spark-mid spark-delay-3">
-                </div>
-                <div
-                    class="absolute bottom-[32%] left-[38%] w-1.5 h-1.5 rounded-full bg-[#f4c466] shadow-[0_0_8px_#f4c466] spark-high spark-delay-15">
-                </div>
+                <!-- Left Page Embers -->
+                <div class="absolute bottom-[31%] left-[45%] w-2 h-2 rounded-full bg-[#f4c466] shadow-[0_0_8px_#f4c466] spark-high spark-delay-1"></div>
+                <div class="absolute bottom-[27%] left-[42%] w-2.5 h-2.5 rounded-full bg-[#dfa839] shadow-[0_0_10px_#dfa839] spark-ultra spark-delay-4"></div>
+                <div class="absolute bottom-[34%] left-[47%] w-1.5 h-1.5 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-mid spark-delay-7"></div>
 
-                <!-- Right Page Embers (Floating High & Mid) -->
-                <div
-                    class="absolute bottom-[31%] left-[54%] w-2.5 h-2.5 rounded-full bg-[#ffe49e] shadow-[0_0_12px_#ffe49e] spark-high spark-delay-3">
-                </div>
-                <div
-                    class="absolute bottom-[28%] left-[56%] w-3 h-3 rounded-full bg-[#f4c466] shadow-[0_0_14px_#f4c466] spark-ultra spark-delay-7">
-                </div>
-                <div
-                    class="absolute bottom-[34%] left-[53%] w-1.5 h-1.5 rounded-full bg-[#ffe49e] shadow-[0_0_6px_#ffe49e] spark-mid spark-delay-10">
-                </div>
-                <div
-                    class="absolute bottom-[29%] left-[57%] w-2 h-2 rounded-full bg-[#dfa839] shadow-[0_0_10px_#dfa839] spark-high spark-delay-13">
-                </div>
-                <div
-                    class="absolute bottom-[33%] left-[55%] w-1 h-1 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-ultra spark-delay-1">
-                </div>
-                <div
-                    class="absolute bottom-[30%] left-[59%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_8px_#ffe49e] spark-mid spark-delay-8">
-                </div>
-                <div
-                    class="absolute bottom-[32%] left-[62%] w-1.5 h-1.5 rounded-full bg-[#f4c466] shadow-[0_0_8px_#f4c466] spark-high spark-delay-14">
-                </div>
-
-                <!-- Ambient Radiant Micro-Sparks -->
-                <div
-                    class="absolute bottom-[35%] left-[48%] w-1 h-1 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-mid spark-delay-2">
-                </div>
-                <div
-                    class="absolute bottom-[36%] left-[52%] w-1 h-1 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-high spark-delay-6">
-                </div>
-                <div
-                    class="absolute bottom-[26%] left-[47.5%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_10px_#ffe49e] spark-ultra spark-delay-10">
-                </div>
-                <div
-                    class="absolute bottom-[27%] left-[52.5%] w-2 h-2 rounded-full bg-[#f4c466] shadow-[0_0_10px_#f4c466] spark-ultra spark-delay-4">
-                </div>
+                <!-- Right Page Embers -->
+                <div class="absolute bottom-[31%] left-[55%] w-2 h-2 rounded-full bg-[#ffe49e] shadow-[0_0_8px_#ffe49e] spark-high spark-delay-2"></div>
+                <div class="absolute bottom-[28%] left-[58%] w-2.5 h-2.5 rounded-full bg-[#f4c466] shadow-[0_0_10px_#f4c466] spark-ultra spark-delay-5"></div>
+                <div class="absolute bottom-[33%] left-[53%] w-1.5 h-1.5 rounded-full bg-[#ffffff] shadow-[0_0_6px_#ffffff] spark-mid spark-delay-8"></div>
             </div>
 
             <!-- Hero Content Overlay (Razor Sharp & Highly Legible) -->
@@ -1288,7 +1228,7 @@
                     x-transition:enter-start="opacity-0 scale-98" x-transition:enter-end="opacity-100 scale-100">
                     <div class="rounded-2xl overflow-hidden border border-[#f4c466]/20 shadow-2xl">
                         <img src="{{ asset('images/screenshot-dashboard.jpg') }}" alt="Granth Sanchay Dashboard"
-                            class="w-full h-auto object-cover">
+                            loading="lazy" decoding="async" class="w-full h-auto object-cover">
                     </div>
                     <div
                         class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#fcebc7]/90 px-2">
@@ -1308,7 +1248,7 @@
                     x-transition:enter-start="opacity-0 scale-98" x-transition:enter-end="opacity-100 scale-100">
                     <div class="rounded-2xl overflow-hidden border border-[#f4c466]/20 shadow-2xl">
                         <img src="{{ asset('images/screenshot-catalog.jpg') }}" alt="Book Master Catalog"
-                            class="w-full h-auto object-cover">
+                            loading="lazy" decoding="async" class="w-full h-auto object-cover">
                     </div>
                     <div
                         class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#fcebc7]/90 px-2">
@@ -1328,7 +1268,7 @@
                     x-transition:enter-start="opacity-0 scale-98" x-transition:enter-end="opacity-100 scale-100">
                     <div class="rounded-2xl overflow-hidden border border-[#f4c466]/20 shadow-2xl">
                         <img src="{{ asset('images/screenshot-circulation.jpg') }}" alt="Circulation Desk"
-                            class="w-full h-auto object-cover">
+                            loading="lazy" decoding="async" class="w-full h-auto object-cover">
                     </div>
                     <div
                         class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#fcebc7]/90 px-2">
@@ -1348,7 +1288,7 @@
                     x-transition:enter-start="opacity-0 scale-98" x-transition:enter-end="opacity-100 scale-100">
                     <div class="rounded-2xl overflow-hidden border border-[#f4c466]/20 shadow-2xl">
                         <img src="{{ asset('images/screenshot-opac.jpg') }}" alt="Student OPAC"
-                            class="w-full h-auto object-cover">
+                            loading="lazy" decoding="async" class="w-full h-auto object-cover">
                     </div>
                     <div
                         class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#fcebc7]/90 px-2">
